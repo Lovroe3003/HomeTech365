@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = "root";
         $password = "";
         
-
         $email = $_POST['email'];
         $currentUserEmail = $_SESSION['email'];
 
@@ -53,8 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->close();
         $conn->close();
-
-    
     }
     echo json_encode(array('success' => $success, 'error' => $error));
 }

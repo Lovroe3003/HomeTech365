@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 $servername = "localhost";
 $dbname = "webshop";
 $username = "root";
@@ -22,14 +23,16 @@ if(isset($_SESSION['id'])){
         if ($result) {
             $walletAmount = $result['wallet'];
             echo json_encode(['balance' => $walletAmount]); // Returning 'balance' for consistency
-        } else {
+        } 
+        else {
             echo json_encode(['error' => 'No wallet data found for this user.']);
         }
     }
     catch(PDOException $e){
         echo json_encode(['error' => 'Database error:' . $e->getMessage()]);
     }
-}else{
+}
+else{
     echo json_encode(['error' => 'No user ID to get wallet balance']);
 }
 

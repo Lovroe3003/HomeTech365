@@ -1,7 +1,6 @@
 <header>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Logo</a>
+        <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -86,12 +85,11 @@
 </header>
 
 <script>
-    // JavaScript to redirect to the URL with the selected category
     document.querySelectorAll('.category-item').forEach(function(item) {
         item.addEventListener('click', function() {
             var selectedCategory = this.getAttribute('data-category');
-            var currentUrl = window.location.href.split('?')[0]; // Get the current URL without query params
-            window.location.href = currentUrl + '?category=' + selectedCategory; // Redirect with category query parameter
+            var currentUrl = window.location.href.split('?')[0];
+            window.location.href = currentUrl + '?category=' + selectedCategory;
         });
     });
 </script>

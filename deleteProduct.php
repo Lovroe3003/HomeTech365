@@ -24,13 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo json_encode(['success' => false, 'message' => 'Failed to delete product']);
             }
 
-        } catch (PDOException $e) {
+        } 
+        catch (PDOException $e) {
             echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
         }
-    } else {
+    } 
+    else {
         echo json_encode(['success' => false, 'message' => 'Product ID is missing']);
     }
-} else {
+} 
+else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method']);
 }
 

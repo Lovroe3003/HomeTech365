@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
     const deleteProductMessage = document.getElementById('delete-product-message');
     const changePriceForm = document.getElementById('change-price-form');
-    const changePriceModal = document.getElementById('change-price-modal');
-    const submitChangePriceBtn = document.getElementById('submit-change-price-btn');
     const changePriceMessage = document.getElementById('change-price-message');
 
     let productId = -1;
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(!window.location.href.endsWith("userProfile.php")){
         document.getElementById('search-input').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission if inside a form
+                event.preventDefault();
                 updateURL();
             }
         });
@@ -48,34 +46,33 @@ document.addEventListener('DOMContentLoaded', function() {
             const sortValue = document.getElementById('sort-select').value;
             const categoryValue = document.getElementById('category-dropdown').value;
         
-            // Create a new URL object to manipulate the URL
             let url = new URL(window.location.href);
         
-           // Check if there's a hash in the URL (i.e., #)
             if (url.hash) {
-                url.hash = ''; // Remove the hash if present
+                url.hash = '';
             }
 
-            // Update query parameters only if the button is clicked
             if (searchValue) {
-                url.searchParams.set('search', searchValue); // Update search term
-            } else {
-                url.searchParams.delete('search'); // Remove if search is empty
+                url.searchParams.set('search', searchValue);
+            } 
+            else {
+                url.searchParams.delete('search');
             }
             
             if (sortValue) {
-                url.searchParams.set('sort', sortValue); // Update sort type
-            } else {
-                url.searchParams.delete('sort'); // Remove if sort is not selected
+                url.searchParams.set('sort', sortValue);
+            } 
+            else {
+                url.searchParams.delete('sort');
             }
 
             if (categoryValue) {
-                url.searchParams.set('category', categoryValue); // Update category
-            } else {
-                url.searchParams.delete('category'); // Remove if category is not selected
+                url.searchParams.set('category', categoryValue); 
+            } 
+            else {
+                url.searchParams.delete('category');
             }
 
-            // Reload the page with the updated URL (without the # symbol)
             window.location.href = url.href;
         }
     }else{
@@ -219,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.quantity-btn').forEach(button => {
         button.addEventListener('click', function() {
             productId = this.getAttribute('data-id');
-            $('#quantity-modal').modal('show');
+            $('#select-quantity-modal').modal('show');
         });
     });
 
@@ -261,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const response = JSON.parse(xhttp.responseText);
                     if (response.success) {
                         updateCartBadge();
-                        $('#quantity-modal').modal('hide');
+                        $('#select-quantity-modal').modal('hide');
                         showToast("Product added to cart.", "success");
                     } else {
                         showToast(response.message, "danger");
@@ -326,11 +323,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             `;
                         });
-                        message += `<h4>Total price: $${totalPrice.toFixed(2)}</h4>`;
+                        message += `<h4 class="cart-total-price mt-3">Total price: $${totalPrice.toFixed(2)}</h4>`;
                         cartItemsList.innerHTML = message;
                         buyButton.style.display = 'block';
                     } else {
-                        cartItemsList.innerHTML = "<h5>Cart is empty!</h5>";
+                        cartItemsList.innerHTML = "<h5>Your shopping cart is empty!</h5>";
                         buyButton.style.display = 'none';
                     }
 
@@ -448,18 +445,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                         $('#cart-modal').modal('hide');
                                         showToast("Thank you for your purchase!", "success");                                        
                                     } else {
-                                        showToast("Not enough money!", "danger");
+                                        showToast("You don't have enough money!", "danger");
                                     }
                                 } catch (error) {
                                     console.error("Error parsing JSON response:", error);
                                     console.error("Response:", xhttpWallet.responseText);
                                 }
                             } else {
-                                showToast('Failed to fetch wallet amount.', 'danger');
+                                showToast('Failed to fetch wallet balance.', 'danger');
                             }
                         };
                         xhttpWallet.onerror = function() {
-                            showToast('Error fetching wallet amount.', 'danger');
+                            showToast('Error fetching wallet balance.', 'danger');
                         };
                         xhttpWallet.send();
                     } else {
@@ -582,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 $('#add-product-modal').modal('hide');
                                 addProductMessage.innerHTML = '';
                                 addProductForm.reset();
-                                location.reload(); // Optional: reload the page to show new product
+                                location.reload();
                             }, 2500);
                         } else {
                             addProductMessage.innerHTML = '<div class="alert alert-danger mt-3" role="alert">' + response.message + '</div>';
@@ -654,7 +651,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Request error.');
                 };
 
-                // Send the request with form data
                 xhttp.send(formData);
             }
         });
@@ -694,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     $('#change-price-modal').modal('hide');
                                     changePriceMessage.innerHTML = '';
                                     changePriceForm.reset();
-                                    location.reload(); // Optional: reload the page to show new product
+                                    location.reload();
                                 }, 2500);
                             } else {
                                 changePriceMessage.innerHTML = '<div class="alert alert-danger mt-3" role="alert">' + response.message + '</div>';

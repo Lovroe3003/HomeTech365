@@ -47,7 +47,7 @@
     </main>
 
 <?php include 'modal.php'; ?>
-
+<?php include 'footer.php'; ?>
 
 </body>
 </html>

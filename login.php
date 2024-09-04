@@ -39,18 +39,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($row['admin'] == 1) {
                     $_SESSION['admin'] = true;
                 }
-            } else {
+            } 
+            else {
                 $error = "Incorrect password. Please try again.";
             }
-        } else {
+        } 
+        else {
             $error = "User with this email address does not exist.";
         }
 
         $stmt->close();
         $conn->close();
-    } else {
+    } 
+    else {
         $error = "Please enter email and password.";
     }
+    
     echo json_encode(array('success' => $success, 'error' => $error));
 }
 ?>

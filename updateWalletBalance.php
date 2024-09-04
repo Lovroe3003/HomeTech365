@@ -24,10 +24,12 @@ if (isset($_SESSION['id']) && isset($_POST['new_amount'])) {
     if ($stmt->execute()) {
         echo json_encode(['success' => true]);
         exit;
-    } else {
+    } 
+    else {
         echo json_encode(['success' => false, 'error' => 'Failed to update wallet amount.']);
         exit;
     }
+    
     $stmt->close();
     $conn->close();
 } 

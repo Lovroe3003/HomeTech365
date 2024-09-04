@@ -100,11 +100,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="quantity-modal" tabindex="-1" role="dialog" aria-labelledby="quantity-modal-label" aria-hidden="true">
+<div class="modal fade" id="select-quantity-modal" tabindex="-1" role="dialog" aria-labelledby="select-quantity-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="quantity-modal-label">Select Quantity</h4>
+                <h4 class="modal-title" id="select-quantity-modal-label">Select Quantity</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

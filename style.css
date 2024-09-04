@@ -12,6 +12,22 @@ body {
     padding-bottom: 60px;
 }
 
+header, footer{
+    background-color: #cecece;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4.5rem;
+}
+
+.footer-text {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
 .btn-outline-dark{
     font-weight: bold;
 }
@@ -57,6 +73,15 @@ body {
     align-items: center;
 }
 
+.remove-btn {
+    margin-top: 0.5rem;
+    margin-bottom:0.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: auto;
+    font-size: 1.2rem;
+}
+
 .item .image-container img {
     max-width: 100%;
     max-height: 100%;
@@ -84,9 +109,6 @@ body {
     width: 75%;
 }
 
-
-
-
 .item .buttons .details-btn,
 .item .buttons .add-to-cart-btn{
     width: 100%;
@@ -109,9 +131,6 @@ body {
     background-color:  #226480;
 }
 
-.btn-block:focus {
-    box-shadow: 0 0 0 0.2rem rgba(15, 45, 58, 0.527);
-}
 
 .toast{
     font-size: 1.1rem;
@@ -143,13 +162,15 @@ body {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-    background-color: gray;
     justify-content: space-between;
     background-color: #dadada;
-    ;
+    border: 1px solid #bababa;
+    border-radius: 0.3rem;
     margin-left: 2rem;
     margin-right: 2rem;
 }
+
+
 .remove-quantity {
     width: 15%;
     margin-top: auto;
@@ -157,23 +178,6 @@ body {
     margin-left: auto;
 }
 
-
-
-
-@media (max-width: 768px) {
-    .transaction {
-        padding: 10px;
-    }
-}
-
-.submit-btn{
-    margin-top: 2rem;
-    margin-left: 30%;
-    margin-left: 30%;
-    width: 40%;
-    height: 5rem;
-    font-size: 1.4rem;
-}
 
 @media (max-width: 768px) {
     .item {
@@ -189,12 +193,12 @@ body {
         align-items: center;
     }
     .item .basic-information .product-name {
-        font-size: 2.2rem;
+        font-size: 2rem;
         margin-bottom: 10px;
         margin-top: 0;
     }
     .item .basic-information .product-price {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         color: #6a6a6a;
         margin-bottom: 0;
     }
@@ -207,15 +211,18 @@ body {
         align-items: center; 
     }
     .remove-btn {
-        margin-top: 0.5rem;
-        margin-bottom:0.5rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin: 0.5rem;
         width: auto;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        border-radius: 0.3rem;
+    }
+    .buy-btn{
+        font-size: 1.4rem;
+        width: 75%;
+        text-align: center;
     }
     .remove-quantity {
-        width: 35%;
+        width: 40%;
         margin-top: 0;
         margin-bottom:0.5rem;
         margin-left: auto;

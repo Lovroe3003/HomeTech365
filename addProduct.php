@@ -23,27 +23,24 @@ if (isset($_POST['category'], $_POST['name'], $_POST['price'], $_POST['descripti
         $query = "INSERT INTO products (category, name, price, description, image) VALUES (:category, :name, :price, :description, :image)";
         $stmt = $pdo->prepare($query);
 
-        // Bind the parameters
         $stmt->bindParam(':category', $category);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':image', $image);
 
-        // Execute the statement
         if ($stmt->execute()) {
-            // If successful, send a JSON response with success
             echo json_encode(['success' => true, 'message' => 'Product added successfully']);
-        } else {
-            // If not successful, send an error message
+        } 
+        else {
             echo json_encode(['success' => false, 'message' => 'Failed to add the product']);
         }
-    } catch (PDOException $e) {
-        // Catch any database errors
+    } 
+    catch (PDOException $e) {
         echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
     }
-} else {
-    // Handle missing form data
+} 
+else {
     echo json_encode(['success' => false, 'message' => 'All product fields are required']);
 }
 ?>

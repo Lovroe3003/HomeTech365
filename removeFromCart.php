@@ -19,6 +19,7 @@ if(isset($_POST['product_id'], $_POST['quantity'])){
 
         $stmt = $pdo->prepare("SELECT quantity FROM cart WHERE product_id = :product_id");
         $stmt->bindParam(':product_id', $productId);
+
         $stmt->execute();
         $quantityBeforeRemove = $stmt->fetchColumn();
 
@@ -48,7 +49,6 @@ if(isset($_POST['product_id'], $_POST['quantity'])){
             'message' => 'Database error: ' . $e->getMessage()
         ));
     }
-    } 
-    else {echo json_encode(array('success' => false, 'message' => 'No product_id or quantity provided'));
-    }
+} 
+else {echo json_encode(array('success' => false, 'message' => 'No product_id or quantity provided'));}
 ?>

@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $productId = $_POST['product_id'];
         $newPrice = $_POST['new-price'];
 
-        // Validate that new price is a valid number
         if (!is_numeric($newPrice) || $newPrice <= 0) {
             echo json_encode(['success' => false, 'message' => 'Invalid price. Please enter a valid number.']);
             exit;
@@ -28,13 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($stmt->execute()) {
                 echo json_encode(['success' => true, 'message' => 'Price updated successfully.']);
-            } else {
+            } 
+            else {
                 echo json_encode(['success' => false, 'message' => 'Failed to update the price.']);
             }
-        } catch (PDOException $e) {
+        } 
+        catch (PDOException $e) {
             echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
         }
-    } else {
+    } 
+    else {
         echo json_encode(['success' => false, 'message' => 'Missing required fields.']);
     }
 }
